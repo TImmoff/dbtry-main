@@ -21,6 +21,32 @@ public class Chat {
 
     }
 
+    public void updVer(int id, int vers) {
+        try {
+            stmt.executeQuery("INSERT INTO version(ver) VALUES (\'" + id + "\',\'" + vers + "\')");
+        } catch (SQLException e) {
+            System.out.println("e:" + e.getMessage());
+            System.out.println("Connection Failed");
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    public void showVer() {
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM version order by id limit 1");
+            while (rs.next()) {
+
+                System.out.println(rs.getMetaData().getColumnName(2) + "--- " + rs.getInt("ver"));
+            }
+        } catch (SQLException e) {
+            System.out.println("e:" + e.getMessage());
+            System.out.println("Connection Failed");
+            e.printStackTrace();
+            return;
+        }
+    }
+
     public void sayName(String userName) {
         try {
             stmt.executeQuery("INSERT INTO messages( mess,us) VALUES ( 'writing......',\'" + userName + "\')");

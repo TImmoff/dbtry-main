@@ -13,6 +13,11 @@ public class App {
         Scanner ott = new Scanner(System.in);
         String usname, mes, usn;
         Chat chat = new Chat();
+        chat.showVer();
+        System.out.println("Inser version+1=? :D");
+        int ver = ott.nextInt();
+        int id = ver;
+        chat.updVer(id, ver);
         System.out.println("Next step? 0-Show ALl 1-name 2-add/correct message 3-delete message 4-search");
         while (ott.hasNextInt()) {
             int a = ott.nextInt();
